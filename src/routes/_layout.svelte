@@ -1,26 +1,22 @@
 <script>
 	import Nav from '../components/Nav.svelte';
-
+	import Stack from '../components/Stack.svelte';
+	import Bracket from '../components/Bracket.svelte';
+	
 	export let segment;
 </script>
 
-<style>
-	main {
-		position: relative;
-		max-width: 56em;
-		background-color: white;
-		padding: 2em;
-		margin: 0 15%;
-		box-sizing: border-box;
-	}
-</style>
-
 <svelte:head>
-	<title>elo hell</title>
+	<title>elo-hell</title>
 </svelte:head>
 
-<Nav {segment}/>
+<Stack>
+	<Nav {segment}/>
 
-<main>
-	<slot></slot>
-</main>
+	<Bracket>
+		<div slot='center'>
+			<slot></slot>
+		</div>
+	</Bracket>
+
+</Stack>

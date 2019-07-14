@@ -12,7 +12,15 @@
 
 <style>
 	table {
-		width: 100%;
+		font-size: var(--s0);
+	}
+
+	th {
+		padding: var(--s1) var(--s3);
+	}
+
+	td {
+		padding-bottom: var(--s-5);
 	}
 
 	td, th {
@@ -29,7 +37,7 @@
 	</tr>
 	{#each users as user, rank}
 		<tr>
-			<td>{rank}</td>
+			<td>{rank + 1}</td>
 			<td>{user.username}</td>
 			<td>{user.elo}</td> 
 		</tr>
