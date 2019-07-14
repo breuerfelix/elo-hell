@@ -1,4 +1,6 @@
 <script>
+	import Bracket from './Bracket.svelte';
+
 	export let segment;
 </script>
 
@@ -11,7 +13,7 @@
 
 	ul {
 		margin: 0;
-		padding: 0 15%;
+		padding: 0;
 	}
 
 	/* clearfix */
@@ -49,12 +51,13 @@
 </style>
 
 <nav>
-	<ul>
-		<li><a class='{segment === undefined ? "selected" : ""}' href='.'>ranking</a></li>
-		<li><a class='{segment === "about" ? "selected" : ""}' href='about'>about</a></li>
-
-		<!-- for the blog link, we're using rel=prefetch so that Sapper prefetches
-		     the blog data when we hover over the link or tap it on a touchscreen -->
-		<li><a rel=prefetch class='{segment === "blog" ? "selected" : ""}' href='blog'>blog</a></li>
-	</ul>
+	<Bracket>
+		<div slot='center'>
+			<ul>
+				<li><a rel=prefetch class:selected={segment === undefined} href='.'>ranking</a></li>
+				<li><a rel=prefetch class:selected={segment === 'add_user'} href='add_user'>add user</a></li>
+				<li><a rel=prefetch class:selected={segment === 'add_match'} href='add_match'>add match</a></li>
+			</ul>
+		</div>
+	</Bracket>
 </nav>
