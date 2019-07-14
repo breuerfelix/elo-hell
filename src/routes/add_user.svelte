@@ -1,5 +1,5 @@
 <script>
-	import Stack from '../components/Stack.svelte';
+	import Stack from '@silvancodes/svelte-the-stack';
     let username = '';
 
     async function addUser(event) {
@@ -8,9 +8,10 @@
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username })
         });
+        const data = await res.json();
 
-        if (res.error) {
-            alert(res.error);
+        if (data.error) {
+            alert(data.error);
             return;
         }
 

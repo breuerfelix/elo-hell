@@ -9,7 +9,7 @@
 <script>
     import Bracket from '../components/Bracket.svelte';
     import Cover from '../components/Cover.svelte';
-	import Stack from '../components/Stack.svelte';
+	import Stack from '@silvancodes/svelte-the-stack';
     import ScoreBar from '../components/ScoreBar.svelte';
     import UserBar from '../components/UserBar.svelte';
     import UserTable from '../components/UserTable.svelte';
@@ -18,16 +18,40 @@
     let usersOne = [];
     let usersTwo = [];
     
-    let activeScoreOne = 0;
-    let activeScoreTwo = 0;
+    let activeScoreOne = 10;
+    let activeScoreTwo = 10;
 
-    function submitMatch() {
+    async function submitMatch() {
         if (!usersOne.length || !usersTwo.length) {
             alert('Teams cannot be empty!');
             return;
         }
 
-        console.log('submit')
+        const body = {
+            usersOne,
+            usersTwo,
+            scoreOne: activeScoreOne,
+            scoreTwo: activeScoreTwo
+        };
+
+        const res = await fetch('game.json', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body)
+        });
+        const data = await res.json();
+
+        if (data.error) {
+            alert(data.error);
+            return;
+        }
+
+        // reset UI
+        usersOne = [],
+        usersTwo = [],
+        activeScoreOne = 10;
+        activeScoreTwo = 10;
+        alert('Match added');
     }
 </script>
 

@@ -39,7 +39,7 @@
 		<tr>
 			<td>{rank + 1}</td>
 			<td>{user.username}</td>
-			<td>{user.elo}</td> 
+			<td>{user.elo || '-'}</td> 
 		</tr>
 	{/each}
 </table>
