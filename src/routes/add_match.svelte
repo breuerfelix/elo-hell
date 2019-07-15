@@ -7,6 +7,7 @@
 </script>
 
 <script>
+    import {goto} from '@sapper/app';
     import Bracket from '../components/Bracket.svelte';
     import Cover from '../components/Cover.svelte';
 	import Stack from '@silvancodes/svelte-the-stack';
@@ -57,6 +58,7 @@
         activeScoreOne = 10;
         activeScoreTwo = 10;
         alert('Match added');
+        goto('/');
     }
 </script>
 
