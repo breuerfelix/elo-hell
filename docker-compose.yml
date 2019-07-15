@@ -12,3 +12,5 @@ services:
     restart: unless-stopped
     volumes:
       - ./elo-db:/data/db
+    ports:
+      - 27017:27017
