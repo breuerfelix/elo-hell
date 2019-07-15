@@ -34,12 +34,16 @@
 		<th># rank</th>
 		<th># username</th>
 		<th># elo</th> 
+		<th># wins</th> 
+		<th># games</th> 
 	</tr>
 	{#each users as user, rank}
 		<tr>
 			<td>{rank + 1}</td>
 			<td>{user.username}</td>
-			<td>{user.elo || '-'}</td> 
+			<td>{user.elo}</td> 
+			<td>{user.wins}</td> 
+			<td>{user.games}</td> 
 		</tr>
 	{/each}
 </table>

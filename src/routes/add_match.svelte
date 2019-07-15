@@ -27,6 +27,11 @@
             return;
         }
 
+        if (activeScoreOne == activeScoreTwo) {
+            alert('Scores must be different!');
+            return;
+        }
+
         const body = {
             usersOne,
             usersTwo,
