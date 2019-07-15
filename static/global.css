@@ -1,4 +1,4 @@
-:root {
+html {
 	/* ratios for maintaining visual consistency */
 	--ratio: 1.25;
 	--s-5: calc(var(--s-4) / var(--ratio));
