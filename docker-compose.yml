@@ -11,9 +11,4 @@ services:
     image: mongo:latest
     restart: unless-stopped
     volumes:
-      - elo-mongo:/data/db
-    ports:
-      - 27017:27017
-
-volumes:
-  elo-mongo:
+      - ./elo-db:/data/db
