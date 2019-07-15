@@ -8,6 +8,14 @@ layouted by [everylayout svelte components](https://github.com/SilvanCodes/svelt
 
 ## screenshots
 
+### ranking
+
 ![table](docs/table.png)
+
+### add match
+
 ![add_match](docs/add_match.png)
+
+### add user
+
 ![add_user](docs/add_user.png)
