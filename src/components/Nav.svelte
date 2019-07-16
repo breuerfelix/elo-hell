@@ -50,13 +50,14 @@
 	}
 </style>
 
-<nav>
+<nav class="border-red">
 	<Bracket>
 		<div slot='center'>
 			<ul>
-				<li><a rel=prefetch class:selected={segment === undefined} href='.'>ranking</a></li>
-				<li><a rel=prefetch class:selected={segment === 'add_user'} href='add_user'>add user</a></li>
-				<li><a rel=prefetch class:selected={segment === 'add_match'} href='add_match'>add match</a></li>
+				<li><a rel=prefetch class:bg-red-selected={segment === undefined} href='.'>Ranking</a></li>
+				<li><a rel=prefetch class:bg-red-selected={segment === 'add_user'} href='add_user'>Add User</a></li>
+				<li><a rel=prefetch class:bg-red-selected={segment === 'add_match'} href='add_match'>Add Match</a></li>
+				<li><a rel=prefetch class:bg-red-selected={segment === 'all_matches'} href='all_matches'>All Matches</a></li>
 			</ul>
 		</div>
 	</Bracket>
