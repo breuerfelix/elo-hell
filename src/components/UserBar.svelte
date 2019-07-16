@@ -15,11 +15,14 @@
     }
 
     .box > .item {
-        border: 1px solid lightgrey;
-        padding: var(--s-4);
-        margin: var(--s-5);
-        cursor: pointer;
-        font-size: var(--s0);
+        border                  : 1px solid lightgrey;
+        -webkit-border-radius   : 0px;
+        -moz-border-radius      : 0px;
+        border-radius           : 0px;
+        padding                 : var(--s-4);
+        margin                  : var(--s-5);
+        cursor                  : pointer;
+        font-size               : var(--s0);
     }
 </style>
 

@@ -9,12 +9,11 @@ function prob(rating1, rating2) {
 export async function get(req, res) {
 	const { db } = req;
 
-	const games = await db.collection('games').find().limit(10).toArray()
+	const games = await db.collection('games').find().toArray()
 
 	res.writeHead(200, {
 		'Content-Type': 'application/json'
 	});
-
 
 	res.end(JSON.stringify(games));
 }

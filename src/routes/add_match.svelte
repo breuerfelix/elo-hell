@@ -7,13 +7,13 @@
 </script>
 
 <script>
-    import {goto} from '@sapper/app';
-    import Bracket from '../components/Bracket.svelte';
-    import Cover from '../components/Cover.svelte';
-	import Stack from '@silvancodes/svelte-the-stack';
-    import ScoreBar from '../components/ScoreBar.svelte';
-    import UserBar from '../components/UserBar.svelte';
-    import UserTable from '../components/UserTable.svelte';
+    import {goto} from      '@sapper/app';
+    import Bracket from     '../components/Bracket.svelte';
+    import Cover from       '../components/Cover.svelte';
+	import Stack from       '@silvancodes/svelte-the-stack';
+    import ScoreBar from    '../components/ScoreBar.svelte';
+    import UserBar from     '../components/UserBar.svelte';
+    import UserTable from   '../components/UserTable.svelte';
 
     export let users;
     let usersOne = [];
@@ -84,7 +84,7 @@
         <Bracket>
             <div class='slot' slot='left'>
                 <Stack>
-                    <h2>Team #1</h2>
+                    <h2>Heimmanschaft</h2>
                     <ScoreBar bind:activeScore={activeScoreOne}></ScoreBar>
                     <UserBar bind:users={usersOne}></UserBar>
                 </Stack>
@@ -94,7 +94,7 @@
 
             <div class='slot' slot='right'>
                 <Stack>
-                    <h2>Team #2</h2>
+                    <h2>Gastmanschaft</h2>
                     <ScoreBar bind:activeScore={activeScoreTwo}></ScoreBar>
                     <UserBar bind:users={usersTwo}></UserBar>
                 </Stack>
@@ -107,6 +107,6 @@
     </div>
 
     <div class='center' slot='below'>
-        <button on:click={submitMatch}>Submit</button>
+        <button class="btn btn-red" on:click={submitMatch}>Submit</button>
     </div>
 </Cover>

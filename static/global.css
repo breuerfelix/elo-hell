@@ -22,7 +22,15 @@ html {
 	--color-primary: #ffc902;
 	--color-secondary: #0a008a;
 	--color-ternary: #ff4a12;
+
+	--white 	: #ffffff;
+	--blue 		: #4682B4;
+	--green		: #3CB371;
+	--orange	: #FF8C00;
+	--red 		: #B22222;
+	--grey 		: #808080;
 }
+
 
 * {
 	/* in general calculate from border-box */
@@ -47,6 +55,14 @@ footer {
 body {
 	font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 	color: #333;
+}
+
+table{
+	border-collapse: collapse !important;
+}
+table td {
+	border-bottom: 1px solid #000;
+	border-collapse: collapse;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -82,4 +98,194 @@ button {
 	width: 100%;
 	height: 35px;
 	font-size: var(--s0);
+}
+
+.btn {
+	margin-right 		: 1em;
+	display 			: inline-block;
+	outline 			: none;
+	*zoom 				: 1;
+	text-align 			: center;
+	text-decoration 	: none;
+	font-family 		: inherit;
+	font-weight 		: 300;
+	letter-spacing 		: 1px;
+	vertical-align 		: middle;
+	border 				: 1px solid;
+	-webkit-transition 	: all 0.2s ease;
+	-moz-transition 	: all 0.2s ease;
+	-ms-transition 		: all 0.2s ease;
+	-o-transition 		: all 0.2s ease;
+	transition 			: all 0.2s ease;
+	box-sizing 			: border-box;
+	text-shadow 		: 0 1px 0 rgba(0,0,0,0.01);
+
+	background 	: #FFFFFF;
+}
+.btn-large {
+	font-size 	: 1.0625em;
+	padding 	: 0.5625em 1.5em;
+}
+
+.btn-medium {
+	font-size 	: 0.9375em;
+	padding 	: 0.5375em 1.375em;
+}
+
+.btn-small {
+	font-size 	: 0.8125em;
+	padding 	: 0.4125em 1.25em;
+}
+
+.btn-radius {
+	border-radius: 3px;
+}
+
+.btn:hover{
+	color 		: #fff;
+}
+.btn-blue {
+	color 		: var(--blue);
+	border-color: #4682B4;
+}
+
+.btn-blue:hover {
+	background 	: var(--blue);
+	border-color: var(--blue);
+}
+
+.btn-green {
+	color: var(--green);
+	border-color: var(--green);
+}
+.btn-green:hover {
+	background 	: var(--green);
+	border-color: var(--green);
+}
+
+.btn-orange {
+	color: var(--orange);
+	border-color: var(--orange);
+}
+.btn-orange:hover {
+	background 	: var(--orange);
+	border-color: var(--orange);
+}
+
+.btn-red {
+	color: var(--red);
+	border-color: var(--red);
+}
+.btn-red:hover {
+	background 	: var(--red);
+	border-color: var(--red);
+}
+
+.btn-gray {
+	color: var(--grey);
+	border-color: var(--grey);
+}
+.btn-gray:hover {
+	background 	: var(--grey);
+	border-color: var(--grey);
+}
+
+.selected.blue::after {
+	background-color: var(--blue) !important;
+}
+.selected.green::after {
+	background-color: var(--green) !important;
+}
+.selected.orange::after {
+	background-color: var(--orange) !important;
+}
+.selected.red::after {
+	background-color: var(--red) !important;
+}
+.selected.grey::after {
+	background-color: var(--grey) !important;
+}
+
+.bg-blue,
+.bg-blue-selected {
+	color 			: var(--white);
+	background-color: var(--blue) ;
+}
+.bg-green,
+.bg-green-selected {
+	color 			: var(--white);
+	background-color: var(--green);
+}
+.bg-orange,
+.bg-orange-selected {
+	color 			: var(--white);
+	background-color: var(--orange);
+}
+.bg-red,
+.bg-red-selected {
+	color 			: var(--white);
+	background-color: var(--red);
+}
+.bg-grey,
+.bg-grey-selected {
+	color 			: var(--white);
+	background-color: var(--grey);
+}
+
+.border-blue{
+	border-bottom-color: var(--blue) !important;
+}
+.border-green{
+	border-bottom-color: var(--green) !important;
+}
+.border-orange {
+	border-bottom-color: var(--orange) !important;
+}
+.border-red {
+	border-bottom-color: var(--red) !important;
+}
+.border-grey{
+	border-bottom-color: var(--grey) !important;
+}
+
+.blue{
+	color: var(--blue) !important;
+}
+.green{
+	color: var(--green) !important;
+}
+.orange {
+	color: var(--orange) !important;
+}
+.red {
+	color: var(--red) !important;
+}
+.grey{
+	color: var(--grey) !important;
+}
+
+
+/** Dynamic Style **/
+.match_header th{
+	padding: var(--s1) 0 !important;
+}
+.match_header th {
+	vertical-align: top !important;
+	text-align: left !important;
+}
+.match_content .match_name{
+	vertical-align 	: top !important;
+	text-align 		: left !important;
+	width 			: 100px;
+}
+
+.match_content .match_id{
+	vertical-align 	: top !important;
+	text-align 		: left !important;
+	min-width 		: 30px;
+}
+.match_content .match_score{
+	vertical-align 	: top !important;
+	text-align 		: left !important;
+	min-width 		: 80px;
 }

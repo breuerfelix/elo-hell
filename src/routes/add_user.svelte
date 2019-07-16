@@ -33,6 +33,6 @@
 <form on:submit|preventDefault={addUser}>
     <Stack margin='--s2'>
         <input required placeholder='enter username' bind:value={username} type='text'>
-        <button type='submit'>add</button>
+        <button class="btn btn-red" type='submit'>Add</button>
     </Stack>
 </form>
