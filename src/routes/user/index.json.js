@@ -1,7 +1,8 @@
 export async function get(req, res) {
 	const { db } = req;
 
-	let users = await db.collection('users').find().toArray();
+	let users = await db.collection('users').find().limit(10).toArray()
+
 
 	users.sort((a, b) => b.elo - a.elo);
 	users = users.map(user => ({ ...user, elo: user.elo | 0 }));

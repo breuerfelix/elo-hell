@@ -30,10 +30,7 @@
 
 <ul>
     {#each scores as score}
-        <li
-            class:activeScore={score == activeScore}
-            on:click={setScore(score)}
-        >
+        <li class:activeScore={score == activeScore} on:click={setScore(score)} >
             {score}
         </li>
     {/each}

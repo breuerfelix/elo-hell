@@ -17,10 +17,15 @@
 </script>
 
 <style>
-    .box {
+    .flex{
         display: flex;
-        border: 1px solid grey;
-        flex-wrap: wrap;
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+    .box {
+        display     : flex;
+        border      : 1px solid grey;
+        flex-wrap   : wrap;
     }
 
     .box > .item {
@@ -30,11 +35,8 @@
         display: flex;
     }
 
-    .team, .name {
-        padding: var(--s-2) var(--s0);
-    }
-
     .team {
+        padding: var(--s-2) var(--s0);
         cursor: pointer;
         border: 1px solid lightgrey;
     }
@@ -47,8 +49,10 @@
         border-width: 0 0 0 1px;
     }
 
-    .name {
+    .username {
         font-weight: bold;
+        padding: var(--s-2) var(--s0);
+        margin: 0 auto;
     }
 
     .selected {
@@ -56,22 +60,14 @@
     }
 </style>
 
-<div class='box'>
+<div class='box flex'>
     {#each users as user}
         <div class='item'>
-            <div
-                class='team left'
-                class:selected={usersOne.includes(user)}
-                on:click={() => usersOne = addUser(user, usersOne)}
-            >
+            <div class='team left red' class:bg-red-selected={usersOne.includes(user)} on:click={() => usersOne = addUser(user, usersOne)} >
                 #1
             </div>
-            <div class='name'>{user}</div>
-            <div
-                class='team right'
-                class:selected={usersTwo.includes(user)}
-                on:click={() => usersTwo = addUser(user, usersTwo)}
-            >
+            <div class='username'>{user}</div>
+            <div class='team right red' class:bg-red-selected={usersTwo.includes(user)} on:click={() => usersTwo = addUser(user, usersTwo)} >
                 #2
             </div>
         </div>
