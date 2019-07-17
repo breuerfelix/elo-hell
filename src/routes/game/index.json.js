@@ -51,27 +51,30 @@ export async function post(req, res) {
 	const averageEloTwo = users.filter(x => usersTwo.includes(x.username))
 								.reduce((pv, cv) => pv + cv.elo, 0) / usersTwo.length;
 
-	console.log('averageOne', averageEloOne)
-	console.log('averageTwo', averageEloTwo)
+	console.log('scoreOne', scoreOne);
+	console.log('scoreTwo', scoreTwo);
+
+	console.log('averageOne', averageEloOne);
+	console.log('averageTwo', averageEloTwo);
 
 	const teamOneWon = scoreOne > scoreTwo;
 	const diff = Math.abs(scoreOne - scoreTwo);
-	console.log('diff', diff)
+	console.log('diff', diff);
 
 	const probOne = prob(averageEloOne, averageEloTwo);
 	const probTwo = prob(averageEloTwo, averageEloOne);
 
-	console.log('probOne', probOne)
-	console.log('probTwo', probTwo)
+	console.log('probOne', probOne);
+	console.log('probTwo', probTwo);
 
 	const resOne = (diff / R) * (K * ((teamOneWon ? 1 : 0) - probOne));
 	const resTwo = (diff / R) * (K * ((teamOneWon ? 0 : 1) - probTwo));
 
-	console.log('resOne', resOne)
-	console.log('resTwo', resTwo)
+	console.log('resOne', resOne);
+	console.log('resTwo', resTwo);
 
-	console.log(resOne)
-	console.log(resTwo)
+	console.log(resOne);
+	console.log(resTwo);
 
 	for (const player of users) {
 		if (usersOne.includes(player.username)) {
@@ -79,16 +82,36 @@ export async function post(req, res) {
 			if (teamOneWon) {
 				player.wins = player.wins + 1;
 			}
+			player.goals = player.goals + scoreOne;
+			player.goals_conceded = player.goals_conceded + scoreTwo;
 		} else {
 			player.elo = player.elo + resTwo;
 			if (!teamOneWon) {
 				player.wins = player.wins + 1;
 			}
+			player.goals = player.goals + scoreTwo;
+			player.goals_conceded = player.goals_conceded + scoreOne;
 		}
+
+
 
 		player.games = player.games + 1;
 
-		db.collection('users').updateOne({ username: player.username }, { $set: { elo: player.elo, wins: player.wins, games: player.games } });
+
+		console.log('Tore', player.goals);
+		console.log('Gegentore', player.goals_conceded);
+
+		db.collection('users').updateOne(
+		    { username: player.username },
+            { $set: {
+                elo: player.elo,
+                wins: player.wins,
+                games: player.games,
+				goals: player.goals,
+				goals_conceded: player.goals_conceded
+                }
+            }
+        );
 	}
 
 	res.end(JSON.stringify({ status: 'ok' }));

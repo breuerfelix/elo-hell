@@ -289,3 +289,8 @@ button {
 	text-align 		: left !important;
 	min-width 		: 80px;
 }
+
+.score_difference{
+	font-weight: bold;
+	text-align : right !important;
+}

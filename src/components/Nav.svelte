@@ -58,6 +58,7 @@
 				<li><a rel=prefetch class:bg-red-selected={segment === 'add_user'} href='add_user'>Add User</a></li>
 				<li><a rel=prefetch class:bg-red-selected={segment === 'add_match'} href='add_match'>Add Match</a></li>
 				<li><a rel=prefetch class:bg-red-selected={segment === 'all_matches'} href='all_matches'>All Matches</a></li>
+				<li><a rel=prefetch class:bg-red-selected={segment === 'all_users'} href='all_users'>All Users</a></li>
 			</ul>
 		</div>
 	</Bracket>

@@ -7,11 +7,17 @@
 
 		return { users, games };
 	}
+
+	function calcDifference(a,b) {
+		return a-b;
+
+	}
 </script>
 
 <script>
 	export let users;
 	export let games;
+	export let difference;
 </script>
 
 <style>
@@ -51,6 +57,11 @@
 		<td>{user.elo}</td>
 		<td>{user.wins}</td>
 		<td>{user.games}</td>
+		<td class="score_difference"
+				class:red={calcDifference(user.goals ,user.goals_conceded) < 0 }
+				class:green={calcDifference(user.goals ,user.goals_conceded) > 0 }
+				class:blue={calcDifference(user.goals ,user.goals_conceded) == 0 }
+		>{calcDifference(user.goals ,user.goals_conceded)}</td>
 	</tr>
 	{/each}
 </table>

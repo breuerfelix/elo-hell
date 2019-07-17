@@ -30,7 +30,7 @@ export async function post(req, res) {
 		return;
 	}
 
-	await db.collection('users').insertOne({ username, elo: 1000, games: 0, wins: 0 });
+	await db.collection('users').insertOne({ username, elo: 1000, games: 0, wins: 0, goals: 0, goals_conceded: 0});
 
 	res.end(JSON.stringify({ status: 'ok' }));
 }
