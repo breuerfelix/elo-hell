@@ -1,6 +1,6 @@
 <script context='module'>
 	export async function preload(page, session) {
-		const res = await this.fetch('user.json');
+		const res = await this.fetch('all_users.json');
 		const users = await res.json();
 		return { users: users.map(user => user.username) };
 	}
@@ -18,7 +18,7 @@
     export let users;
     let usersOne = [];
     let usersTwo = [];
-    
+
     let activeScoreOne = 10;
     let activeScoreTwo = 10;
 
@@ -67,7 +67,7 @@
         border: 1px solid lightgrey;
         height: 100%;
     }
-    
+
     .slot {
         width: 40vw;
     }
