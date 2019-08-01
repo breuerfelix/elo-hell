@@ -84,6 +84,49 @@
                 .flex-field-4{
         width: 33.33333333%;
     }
+    .widget{
+
+    }
+        .widget-box {
+            position 		: relative;
+            width 			: 100%;
+            border-radius 	: 3px;
+            background-color: var(--white);
+            border-top 		: 3px solid var(--main-color);
+            margin-bottom 	: 20px;
+            box-shadow 		: 1px 1px 10px rgba(0, 0, 0, 0.1);
+        }
+            .widget-header{
+                position 		: relative;
+                display  		: block;
+                padding  		: 10px;
+                border-bottom 	: 1px solid #f4f4f4;
+                color    		: var(--black);
+            }
+                .widget-header .widget-title {
+                    display 	: inline-block;
+                    font-size 	: 18px;
+                    line-height : 1;
+                    font-weight : bold;
+                    margin      : 0;
+                }
+            .widget-body{
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 3px;
+                border-bottom-left-radius: 3px;
+            }
+            .widget-footer{
+                border-radius 	: 0 0 3px 3px;
+                border-top 		: 1px solid #f4f4f4;
+                padding 		: 10px;
+                background-color: var(--white);
+                text-align 		: center;
+            }
+                .widget-footer a,
+                .widget-footer span{
+                    color 		: #3c8dbc;
+                }
 </style>
 
 <div id="dashboard">
@@ -91,7 +134,9 @@
         <h1 class="no-margin">Dashboard<small>Version 1.0</small></h1>
     </section>
     <section class="content flex-layout content no-center">
-        <div class="flex-row"></div>
+        <div class="flex-row widget">
+
+        </div>
         <div class="flex-row"></div>
         <div class="flex-row"></div>
         <div class="flex-row"></div>
