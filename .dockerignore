@@ -1,3 +1,5 @@
 package-lock.json
 __sapper__
 node_modules
+elo-db
+docs

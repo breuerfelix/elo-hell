@@ -7,7 +7,7 @@
 </script>
 
 <svelte:head>
-	<title>Elo-System Fachschaft ET</title>
+	<title>elo-hell</title>
 </svelte:head>
 
 <Stack>
