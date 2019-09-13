@@ -1,6 +1,6 @@
 <script context='module'>
 	export async function preload(page, session) {
-		const res = await this.fetch('all_users.json');
+		const res = await this.fetch('user.json?amount=0');
 		const users = await res.json();
 		return { users: users.map(user => user.username) };
 	}

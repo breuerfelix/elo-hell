@@ -36,13 +36,13 @@
 </style>
 
 <table>
-	<tr class="red">
+	<tr class='red'>
 		<th># rank</th>
 		<th># username</th>
 		<th># elo</th>
 		<th># wins</th>
 		<th># games</th>
-		<th># TD</th>
+		<th># diff</th>
 	</tr>
 	{#each users as user, rank}
 	<tr>
@@ -51,25 +51,7 @@
 		<td>{user.elo}</td>
 		<td>{user.wins}</td>
 		<td>{user.games}</td>
-	</tr>
-	{/each}
-</table>
-
-<table>
-	<tr class="red">
-		<th># Heim</th>
-		<th># Tore</th>
-		<th># Gast</th>
-		<th># Tore</th>
-		<th># Spieltag</th>
-	</tr>
-	{#each games as game}
-	<tr>
-		<td>{#each game.usersOne as player } {player}<br> {/each}</td>
-		<td>{game.scoreOne}</td>
-		<td>{#each game.usersTwo as player } {player}<br> {/each}</td>
-		<td>{game.scoreTwo}</td>
-		<td>{game.timestamp}</td>
+		<td>{user.diff}</td>
 	</tr>
 	{/each}
 </table>
