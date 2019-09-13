@@ -36,13 +36,13 @@
 </style>
 
 <div class={`bracket${id}`} {style}>
-    <div class="left">
-        <slot name="left"></slot>
+    <div class='left'>
+        <slot name='left'></slot>
     </div>
-    <div class="center">
-        <slot name="center"></slot>
+    <div class='center'>
+        <slot name='center'></slot>
     </div>
-    <div class="right" style="">
-        <slot name="right"></slot>
+    <div class='right'>
+        <slot name='right'></slot>
     </div>
 </div>

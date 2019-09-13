@@ -17,7 +17,7 @@
 </script>
 
 <style>
-    .flex{
+    .flex {
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
@@ -63,11 +63,19 @@
 <div class='box flex'>
     {#each users as user}
         <div class='item'>
-            <div class='team left red' class:bg-red-selected={usersOne.includes(user)} on:click={() => usersOne = addUser(user, usersOne)} >
+            <div
+                class='team left red'
+                class:bg-red-selected={usersOne.includes(user)}
+                on:click={() => usersOne = addUser(user, usersOne)}
+            >
                 #1
             </div>
             <div class='username'>{user}</div>
-            <div class='team right red' class:bg-red-selected={usersTwo.includes(user)} on:click={() => usersTwo = addUser(user, usersTwo)} >
+            <div
+                class='team right red'
+                class:bg-red-selected={usersTwo.includes(user)}
+                on:click={() => usersTwo = addUser(user, usersTwo)}
+            >
                 #2
             </div>
         </div>

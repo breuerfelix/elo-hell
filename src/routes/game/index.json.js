@@ -8,8 +8,9 @@ function prob(rating1, rating2) {
 
 export async function get(req, res) {
 	const { db } = req;
+	const { amount = 10 } = req.query;
 
-	const games = await db.collection('games').find().limit(10).toArray()
+	const games = await db.collection('games').find().limit(Number(amount)).toArray();
 
 	res.writeHead(200, {
 		'Content-Type': 'application/json'
@@ -88,7 +89,10 @@ export async function post(req, res) {
 
 		player.games = player.games + 1;
 
-		db.collection('users').updateOne({ username: player.username }, { $set: { elo: player.elo, wins: player.wins, games: player.games } });
+		db.collection('users').updateOne(
+			{ username: player.username },
+			{ $set: { elo: player.elo, wins: player.wins, games: player.games } }
+		);
 	}
 
 	res.end(JSON.stringify({ status: 'ok' }));

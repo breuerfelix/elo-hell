@@ -36,13 +36,13 @@
 </style>
 
 <div class={`cover${id}`}>
-    <div class="above">
-        <slot name="above"></slot>
+    <div class='above'>
+        <slot name='above'></slot>
     </div>
-    <div class="center">
-        <slot name="center"></slot>
+    <div class='center'>
+        <slot name='center'></slot>
     </div>
-    <div class="below">
-        <slot name="below"></slot>
+    <div class='below'>
+        <slot name='below'></slot>
     </div>
 </div>

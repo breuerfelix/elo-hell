@@ -50,7 +50,7 @@
 	}
 </style>
 
-<nav class="border-red">
+<nav class='border-red'>
 	<Bracket>
 		<div slot='center'>
 			<ul>

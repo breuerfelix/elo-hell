@@ -1,8 +1,8 @@
 {
 	"background_color": "#ffffff",
 	"theme_color": "#333333",
-	"name": "Elo-System",
-	"short_name": "Elo-System",
+	"name": "elo-hell",
+	"short_name": "elo-hell",
 	"display": "standalone",
 	"start_url": "/",
 	"orientation": "landscape",

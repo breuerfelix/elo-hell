@@ -1,6 +1,6 @@
 <script context='module'>
     export async function preload(page, session) {
-        const res_game = await this.fetch('all_matches.json');
+        const res_game = await this.fetch('game.json?amount=0');
         const games = await res_game.json();
 
         return { games };
