@@ -35,11 +35,11 @@
 
 <table id="matches">
     <tr class="match_header red">
-        <th class="match_name"># Heim</th>
-        <th class="match_score"># Tore</th>
-        <th class="match_name"># Gast</th>
-        <th class="match_score"># Tore</th>
-        <th class="match_day"># Spieltag</th>
+        <th class="match_name"># team 1</th>
+        <th class="match_score"># score 1</th>
+        <th class="match_name"># team 2</th>
+        <th class="match_score"># score 2</th>
+        <th class="match_day"># date</th>
     </tr>
     {#each games as game}
     <tr class="match_content">
