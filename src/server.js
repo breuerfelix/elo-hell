@@ -20,7 +20,7 @@ client.connect(err => {
 		next();
 	}
 
-	const { PORT, NODE_ENV } = process.env;
+	const { PORT = 80, NODE_ENV } = process.env;
 	const dev = NODE_ENV === 'development';
 
 	polka()
