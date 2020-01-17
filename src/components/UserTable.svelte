@@ -64,16 +64,16 @@
     {#each users as user}
         <div class='item'>
             <div
-                class='team left red'
-                class:bg-red-selected={usersOne.includes(user)}
+                class='team left'
+                class:selected={usersOne.includes(user)}
                 on:click={() => usersOne = addUser(user, usersOne)}
             >
                 #1
             </div>
             <div class='username'>{user}</div>
             <div
-                class='team right red'
-                class:bg-red-selected={usersTwo.includes(user)}
+                class='team right'
+                class:selected={usersTwo.includes(user)}
                 on:click={() => usersTwo = addUser(user, usersTwo)}
             >
                 #2

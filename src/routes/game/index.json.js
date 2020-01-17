@@ -12,9 +12,7 @@ export async function get(req, res) {
 
 	const games = await db.collection('games').find().limit(Number(amount)).toArray();
 
-	res.writeHead(200, {
-		'Content-Type': 'application/json'
-	});
+	res.writeHead(200, { 'Content-Type': 'application/json' });
 
 
 	res.end(JSON.stringify(games));
@@ -23,17 +21,15 @@ export async function get(req, res) {
 export async function post(req, res) {
 	const { db, body } = req;
 
-	res.writeHead(200, {
-		'Content-Type': 'application/json'
-	});
+	res.writeHead(200, { 'Content-Type': 'application/json' });
 
 	const {
 		usersOne, scoreOne,
-		usersTwo, scoreTwo
+		usersTwo, scoreTwo,
 	} = body;
 	const all = [...usersOne, ...usersTwo];
 	const users = await db.collection('users').find({
-		$or: all.map(username => ({ username }))
+		$or: all.map(username => ({ username })),
 	}).toArray();
 
 	if (users.length != all.length) {
@@ -43,7 +39,7 @@ export async function post(req, res) {
 
 	await db.collection('games').insertOne({
 		...body,
-		timestamp: new Date()
+		timestamp: new Date(),
 	});
 
 	const averageEloOne = users.filter(x => usersOne.includes(x.username))
@@ -76,16 +72,17 @@ export async function post(req, res) {
 	}
 
 	// reduce the amount of elo if one user is new to the system
-	const lowUsers = users.filter(user => user.games + 1 <= 10);
+	const lowUsers = users.filter(user => user.games + 1 < 10);
 	if (lowUsers.length > 0) {
 		resOne = resOne / 2;
 		resTwo = resTwo / 2;
-		console.log('elo / 2 because at least one user got less then 11 games played');
+		console.log('elo / 2 because at least one user got less then 10 games played');
 	}
 
 	console.log('resOne', resOne)
 	console.log('resTwo', resTwo)
 
+	// TODO prettify this loop
 	for (const player of users) {
 		if (usersOne.includes(player.username)) {
 			player.elo = player.elo + resOne;
@@ -109,7 +106,12 @@ export async function post(req, res) {
 
 		db.collection('users').updateOne(
 			{ username: player.username },
-			{ $set: { elo: player.elo, wins: player.wins, games: player.games, diff: player.diff } }
+			{ $set: {
+				elo: player.elo,
+				wins: player.wins,
+				games: player.games,
+				diff: player.diff,
+			} }
 		);
 	}
 

@@ -1,12 +1,12 @@
 <script>
-	import Stack from '@silvancodes/svelte-the-stack';
+    import Stack from '@silvancodes/svelte-the-stack';
     let username = '';
 
     async function addUser(event) {
         const res = await fetch('user.json', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ username })
+            body: JSON.stringify({ username }),
         });
         const data = await res.json();
 
@@ -33,6 +33,6 @@
 <form on:submit|preventDefault={addUser}>
     <Stack margin='--s2'>
         <input required placeholder='enter username' bind:value={username} type='text'>
-        <button class="btn btn-red" type='submit'>Add</button>
+        <button class='btn' type='submit'>Add</button>
     </Stack>
 </form>

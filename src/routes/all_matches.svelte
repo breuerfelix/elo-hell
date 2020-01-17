@@ -1,8 +1,10 @@
 <script context='module'>
     export async function preload(page, session) {
-        const res_game = await this.fetch('game.json?amount=0');
+        const res_game = await this.fetch('game.json?amount=200');
         const games = await res_game.json();
-        games.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+        games.sort((a, b) =>
+            new Date(b.timestamp) - new Date(a.timestamp)
+        );
 
         return { games };
     }
@@ -10,7 +12,6 @@
 
 <script>
     import { formatDate } from '../core';
-    export let users;
     export let games;
 </script>
 
@@ -24,7 +25,7 @@
     }
 
     td {
-        padding-bottom: var(--s-5);
+        padding: var(--s-3);
     }
 
     td, th {
@@ -33,21 +34,21 @@
     }
 </style>
 
-<table id="matches">
-    <tr class="match_header red">
-        <th class="match_name"># team 1</th>
-        <th class="match_score"># score 1</th>
-        <th class="match_name"># team 2</th>
-        <th class="match_score"># score 2</th>
-        <th class="match_day"># date</th>
+<table>
+    <tr>
+        <th># team 1</th>
+        <th># score 1</th>
+        <th># team 2</th>
+        <th># score 2</th>
+        <th># date</th>
     </tr>
     {#each games as game}
-    <tr class="match_content">
-        <td class="match_name">{#each game.usersOne as player}{player}<br>{/each}</td>
-        <td class="match_score">{game.scoreOne}</td>
-        <td class="match_name">{#each game.usersTwo as player}{player}<br>{/each}</td>
-        <td class="match_score">{game.scoreTwo}</td>
-        <td class="match_day">{formatDate(game.timestamp)}</td>
+    <tr>
+        <td>{#each game.usersOne as player}{player}<br>{/each}</td>
+        <td>{game.scoreOne}</td>
+        <td>{#each game.usersTwo as player}{player}<br>{/each}</td>
+        <td>{game.scoreTwo}</td>
+        <td>{formatDate(game.timestamp)}</td>
     </tr>
     {/each}
 </table>
