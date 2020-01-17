@@ -1,7 +1,8 @@
 <script context='module'>
     export async function preload(page, session) {
-        const res_game = await this.fetch('game.json?amount=200');
+        const res_game = await this.fetch('game.json?amount=100');
         const games = await res_game.json();
+
         games.sort((a, b) =>
             new Date(b.timestamp) - new Date(a.timestamp)
         );
@@ -11,7 +12,7 @@
 </script>
 
 <script>
-    import { formatDate } from '../core';
+    import {formatDate} from '../core';
     export let games;
 </script>
 

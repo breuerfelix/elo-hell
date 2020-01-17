@@ -37,9 +37,11 @@ export async function post(req, res) {
 		return;
 	}
 
+	const gameDate = new Date();
+
 	await db.collection('games').insertOne({
 		...body,
-		timestamp: new Date(),
+		timestamp: gameDate,
 	});
 
 	const averageEloOne = users.filter(x => usersOne.includes(x.username))
@@ -111,6 +113,7 @@ export async function post(req, res) {
 				wins: player.wins,
 				games: player.games,
 				diff: player.diff,
+				lastUpdate: gameDate,
 			} }
 		);
 	}
