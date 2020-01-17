@@ -2,18 +2,24 @@
     export async function preload(page, session) {
 	const res = await this.fetch('user.json?amount=0');
 	const users = await res.json();
+
+	// active users will be on the top
+        users.sort((a, b) =>
+            new Date(b.lastUpdate) - new Date(a.lastUpdate)
+        );
+
 	return { users: users.map(user => user.username) };
     }
 </script>
 
 <script>
     import {goto} from      '@sapper/app';
-    import Bracket from     '../components/Bracket.svelte';
-    import Cover from       '../components/Cover.svelte';
     import Stack from       '@silvancodes/svelte-the-stack';
-    import ScoreBar from    '../components/ScoreBar.svelte';
-    import UserBar from     '../components/UserBar.svelte';
-    import UserTable from   '../components/UserTable.svelte';
+    import Bracket from     '../../components/Bracket.svelte';
+    import Cover from       '../../components/Cover.svelte';
+    import ScoreBar from    '../../components/ScoreBar.svelte';
+    import UserBar from     '../../components/UserBar.svelte';
+    import UserTable from   '../../components/UserTable.svelte';
 
     export let users;
     let usersOne = [];
@@ -77,9 +83,9 @@
     }
 </style>
 
-<h1>Add Match</h1>
+<h1>Add Game</h1>
 
-<Cover>
+<Cover centerMargin='1em'>
     <div slot='above'>
         <Bracket>
             <div class='slot' slot='left'>
@@ -102,11 +108,12 @@
         </Bracket>
     </div>
 
-    <div slot='center'>
+    <div class='center' slot='center'>
+        <button class='btn' on:click={submitMatch}>Submit</button>
+    </div>
+
+    <div slot='below'>
         <UserTable bind:users bind:usersOne bind:usersTwo></UserTable>
     </div>
 
-    <div class='center' slot='below'>
-        <button class='btn' on:click={submitMatch}>Submit</button>
-    </div>
 </Cover>

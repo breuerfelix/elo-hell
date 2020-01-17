@@ -3,15 +3,19 @@
 
     export let padding = '--s0';
     export let margin = '--s0';
+    export let centerMargin = 'auto';
 
-    $: id = padding + margin;
+    $: id = padding + margin + centerMargin;
 
-	onMount(() => {
+    onMount(() => {
         document.querySelectorAll(`.cover${id}`).forEach(e => e.style.padding = `var(${padding})`);
         document.querySelectorAll(`.cover${id} > .above`).forEach(e => e.style.marginBottom = `var(${margin})`);
         document.querySelectorAll(`.cover${id} > .below`).forEach(e => e.style.marginTop = `var(${margin})`);
-
+	document.querySelectorAll(`.cover${id} > .center`).forEach(e => {
+	    e.style.marginTop = centerMargin;
+	    e.style.marginBottom = centerMargin;
 	});
+    });
 </script>
 
 <style>

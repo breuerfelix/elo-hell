@@ -27,7 +27,7 @@ export async function post(req, res) {
 	}
 
 	await db.collection('users')
-		.insertOne({ username, elo: 1000, games: 0, wins: 0, diff: 0 });
+		.insertOne({ username, elo: 1000, games: 0, wins: 0, diff: 0, lastUpdate: new Date() });
 
 	res.end(JSON.stringify({ status: 'ok' }));
 }
