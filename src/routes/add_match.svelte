@@ -1,16 +1,16 @@
 <script context='module'>
-	export async function preload(page, session) {
-		const res = await this.fetch('user.json?amount=0');
-		const users = await res.json();
-		return { users: users.map(user => user.username) };
-	}
+    export async function preload(page, session) {
+	const res = await this.fetch('user.json?amount=0');
+	const users = await res.json();
+	return { users: users.map(user => user.username) };
+    }
 </script>
 
 <script>
     import {goto} from      '@sapper/app';
     import Bracket from     '../components/Bracket.svelte';
     import Cover from       '../components/Cover.svelte';
-	import Stack from       '@silvancodes/svelte-the-stack';
+    import Stack from       '@silvancodes/svelte-the-stack';
     import ScoreBar from    '../components/ScoreBar.svelte';
     import UserBar from     '../components/UserBar.svelte';
     import UserTable from   '../components/UserTable.svelte';
@@ -37,13 +37,13 @@
             usersOne,
             usersTwo,
             scoreOne: activeScoreOne,
-            scoreTwo: activeScoreTwo
+            scoreTwo: activeScoreTwo,
         };
 
         const res = await fetch('game.json', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(body)
+            body: JSON.stringify(body),
         });
         const data = await res.json();
 
@@ -84,7 +84,7 @@
         <Bracket>
             <div class='slot' slot='left'>
                 <Stack>
-                    <h2>Heimmanschaft</h2>
+                    <h2>Team 1</h2>
                     <ScoreBar bind:activeScore={activeScoreOne}></ScoreBar>
                     <UserBar bind:users={usersOne}></UserBar>
                 </Stack>
@@ -94,7 +94,7 @@
 
             <div class='slot' slot='right'>
                 <Stack>
-                    <h2>Gastmanschaft</h2>
+                    <h2>Team 2</h2>
                     <ScoreBar bind:activeScore={activeScoreTwo}></ScoreBar>
                     <UserBar bind:users={usersTwo}></UserBar>
                 </Stack>
@@ -107,6 +107,6 @@
     </div>
 
     <div class='center' slot='below'>
-        <button class="btn btn-red" on:click={submitMatch}>Submit</button>
+        <button class='btn' on:click={submitMatch}>Submit</button>
     </div>
 </Cover>

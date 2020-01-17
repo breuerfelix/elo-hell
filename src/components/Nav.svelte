@@ -26,6 +26,7 @@
 	li {
 		display: block;
 		float: left;
+		padding: 0 .5em;
 	}
 
 	.selected {
@@ -44,20 +45,21 @@
 	}
 
 	a {
+		font-weight: 400;
 		text-decoration: none;
 		padding: 1em 0.5em;
 		display: block;
 	}
 </style>
 
-<nav class='border-red'>
+<nav>
 	<Bracket>
 		<div slot='center'>
 			<ul>
-				<li><a rel=prefetch class:bg-red-selected={segment === undefined} href='.'>Ranking</a></li>
-				<li><a rel=prefetch class:bg-red-selected={segment === 'add_user'} href='add_user'>Add User</a></li>
-				<li><a rel=prefetch class:bg-red-selected={segment === 'add_match'} href='add_match'>Add Match</a></li>
-				<li><a rel=prefetch class:bg-red-selected={segment === 'all_matches'} href='all_matches'>All Matches</a></li>
+				<li><a rel=prefetch class:selected={segment === undefined} href='.'>Ranking</a></li>
+				<li><a rel=prefetch class:selected={segment === 'all_matches'} href='all_matches'>All Matches</a></li>
+				<li><a rel=prefetch class:selected={segment === 'add_user'} href='add_user'>Add User</a></li>
+				<li><a rel=prefetch class:selected={segment === 'add_match'} href='add_match'>Add Match</a></li>
 			</ul>
 		</div>
 	</Bracket>

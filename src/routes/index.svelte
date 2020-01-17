@@ -1,17 +1,14 @@
 <script context='module'>
 	export async function preload(page, session) {
-		const res_user = await this.fetch('user.json?amount=0');
-		const res_game = await this.fetch('game.json');
+		const res_user = await this.fetch('user.json?amount=100');
 		const users = await res_user.json();
-		const games = await res_game.json();
 
-		return { users, games };
+		return { users };
 	}
 </script>
 
 <script>
 	export let users;
-	export let games;
 </script>
 
 <style>
@@ -24,19 +21,17 @@
 	}
 
 	td {
-		padding-bottom: var(--s-5);
+		padding: var(--s-3) 0;
 	}
 
 	td, th {
 		text-align: center;
 		vertical-align: middle;
 	}
-
-
 </style>
 
 <table>
-	<tr class='red'>
+	<tr>
 		<th># rank</th>
 		<th># username</th>
 		<th># elo</th>
