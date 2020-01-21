@@ -35,18 +35,18 @@
 		<th># rank</th>
 		<th># username</th>
 		<th># elo</th>
-		<th># wins</th>
-		<th># games</th>
-		<th># diff</th>
+		<th class='hide-mobile'># wins</th>
+		<th class='hide-mobile'># games</th>
+		<th class='hide-mobile'># diff</th>
 	</tr>
 	{#each users as user, rank}
 	<tr>
 		<td>{rank + 1}</td>
 		<td>{user.username}</td>
 		<td>{user.elo}</td>
-		<td>{user.wins}</td>
-		<td>{user.games}</td>
-		<td>{user.diff}</td>
+		<td class='hide-mobile'>{user.wins}</td>
+		<td class='hide-mobile'>{user.games}</td>
+		<td class='hide-mobile'>{user.diff}</td>
 	</tr>
 	{/each}
 </table>

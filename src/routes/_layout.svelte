@@ -13,7 +13,7 @@
 <Stack>
 	<Nav {segment}/>
 
-	<Bracket>
+	<Bracket margin='--zero'>
 		<div slot='center'>
 			<slot></slot>
 		</div>
