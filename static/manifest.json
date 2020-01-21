@@ -5,56 +5,10 @@
 	"short_name": "elo-hell",
 	"display": "standalone",
 	"start_url": "/",
-	"orientation": "landscape",
 	"icons": [
 		{
-			"src": "logo-57.png",
-			"sizes": "57x57",
-			"type": "image/png"
-		},
-		{
-			"src": "logo-72.png",
-			"sizes": "72x72",
-			"type": "image/png"
-		},
-		{
-			"src": "logo-76.png",
-			"sizes": "76x76",
-			"type": "image/png"
-		},
-		{
-			"src": "logo-114.png",
-			"sizes": "114x114",
-			"type": "image/png"
-		},
-		{
-			"src": "logo-120.png",
-			"sizes": "120x120",
-			"type": "image/png"
-		},
-		{
-			"src": "logo-144.png",
-			"sizes": "144x144",
-			"type": "image/png"
-		},
-		{
-			"src": "logo-180.png",
-			"sizes": "180x180",
-			"type": "image/png"
-		},
-		{
-			"src": "logo-192.png",
-			"sizes": "192x192",
-			"type": "image/png"
-		},
-		{
-			"src": "logo-196.png",
+			"src": "favicon.png",
 			"sizes": "196x196",
-			"type": "image/png"
-		},
-		{
-			"src": "logo-512.png",
-			"sizes": "512x512",
 			"type": "image/png"
 		}
 	]

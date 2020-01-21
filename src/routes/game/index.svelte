@@ -85,7 +85,7 @@
 
 <h1>Add Game</h1>
 
-<Cover centerMargin='2em'>
+<Cover centerMargin='1em'>
     <div slot='above'>
         <Bracket>
             <div class='slot' slot='left'>

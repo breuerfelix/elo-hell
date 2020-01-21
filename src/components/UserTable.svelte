@@ -22,10 +22,11 @@
         flex-direction: column;
         flex-wrap: nowrap;
     }
+
     .box {
-        display     : flex;
-        border      : 1px solid grey;
-        flex-wrap   : wrap;
+        display: flex;
+        border: 1px solid grey;
+        flex-wrap: wrap;
     }
 
     .box > .item {

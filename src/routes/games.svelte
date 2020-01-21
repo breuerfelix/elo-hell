@@ -41,7 +41,7 @@
         <th># score 1</th>
         <th># team 2</th>
         <th># score 2</th>
-        <th># date</th>
+        <th class='hide-mobile'># date</th>
     </tr>
     {#each games as game}
     <tr>
@@ -49,7 +49,7 @@
         <td>{game.scoreOne}</td>
         <td>{#each game.usersTwo as player}{player}<br>{/each}</td>
         <td>{game.scoreTwo}</td>
-        <td>{formatDate(game.timestamp)}</td>
+        <td class='hide-mobile'>{formatDate(game.timestamp)}</td>
     </tr>
     {/each}
 </table>
