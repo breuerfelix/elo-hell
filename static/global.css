@@ -130,7 +130,7 @@ button {
 	background-color: var(--grey);
 }
 
-@media only screen and (max-width: 620px) {
+@media (max-width: 620px) {
 	.hide-mobile {
 		display: none !important;
 	}
