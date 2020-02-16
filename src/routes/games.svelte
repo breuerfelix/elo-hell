@@ -7,7 +7,6 @@
             new Date(b.timestamp) - new Date(a.timestamp)
         );
 
-console.log(games)
         return { games };
     }
 </script>
