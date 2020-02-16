@@ -57,7 +57,7 @@
 		<div slot='center'>
 			<ul>
 				<li><a rel=prefetch class:selected={segment === undefined} href='.'>Ranking</a></li>
-				<li class='hide-mobile'><a rel=prefetch class:selected={segment === 'games'} href='games'>Games</a></li>
+				<li><a rel=prefetch class:selected={segment === 'games'} href='games'>Games</a></li>
 				<li><a rel=prefetch class:selected={segment === 'game'} href='game'>Add Game</a></li>
 				<li><a rel=prefetch class:selected={segment === 'user'} href='user'>Add User</a></li>
 			</ul>

@@ -34,5 +34,7 @@
     <Stack margin='--s2'>
         <input required placeholder='enter username' bind:value={username} type='text'>
         <button class='btn' type='submit'>Add</button>
+        <div>Do not forget to verify your user with Telegram!</div>
+        <div><a target='__blank' href='https://t.me/th_elo_bot'><b>@th_elo_bot</b></a></div>
     </Stack>
 </form>

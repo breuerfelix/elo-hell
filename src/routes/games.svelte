@@ -33,22 +33,24 @@
         text-align: center;
         vertical-align: middle;
     }
+
+    .unverified {
+        font-style: italic;
+    }
 </style>
 
 <table>
     <tr>
         <th># team 1</th>
-        <th># score 1</th>
+        <th># score</th>
         <th># team 2</th>
-        <th># score 2</th>
         <th class='hide-mobile'># date</th>
     </tr>
     {#each games as game}
-    <tr>
+    <tr class:unverified={game.userVerified.length > 0}>
         <td>{#each game.usersOne as player}{player}<br>{/each}</td>
-        <td>{game.scoreOne}</td>
+        <td>{game.scoreOne} : {game.scoreTwo}</td>
         <td>{#each game.usersTwo as player}{player}<br>{/each}</td>
-        <td>{game.scoreTwo}</td>
         <td class='hide-mobile'>{formatDate(game.timestamp)}</td>
     </tr>
     {/each}
