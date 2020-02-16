@@ -47,7 +47,7 @@
         <th class='hide-mobile'># date</th>
     </tr>
     {#each games as game}
-    <tr class:unverified={game.userVerified.length > 0}>
+    <tr class:unverified={!game.userVerified}>
         <td>{#each game.usersOne as player}{player}<br>{/each}</td>
         <td>{game.scoreOne} : {game.scoreTwo}</td>
         <td>{#each game.usersTwo as player}{player}<br>{/each}</td>

@@ -12,6 +12,16 @@ function setupTelegram(token, url, dev, db) {
 	const bot = new TelegramBot(token, options);
 	if (!dev) bot.setWebHook(url);
 
+	bot.onText(/\/start/, msg => {
+		const message = `
+/help - may or may not help you
+/link <username> - links <username> to this telegram account
+/register <username> - adds <username> to elo-hell and links to telegram
+`;
+
+		bot.sendMessage(msg.chat.id, message);
+	});
+
 	bot.onText(/\/help/, msg => {
 		const message = `
 /help - may or may not help you
