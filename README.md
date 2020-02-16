@@ -24,5 +24,4 @@ layouted by [everylayout svelte components](https://github.com/SilvanCodes/svelt
 
 - Win Percentage per User
 - Show 10-0 Wins or looses in History
-- Show all Games
 - Show Graph for each User for elo History
