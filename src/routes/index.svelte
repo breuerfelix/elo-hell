@@ -28,6 +28,10 @@
 		text-align: center;
 		vertical-align: middle;
 	}
+
+	.unverified {
+		font-style: italic;
+	}
 </style>
 
 <table>
@@ -42,7 +46,7 @@
 	{#each users as user, rank}
 	<tr>
 		<td>{rank + 1}</td>
-		<td>{user.username}</td>
+		<td class:unverified={!user.verified}>{user.username}</td>
 		<td>{user.elo}</td>
 		<td class='hide-mobile'>{user.wins}</td>
 		<td class='hide-mobile'>{user.games}</td>
