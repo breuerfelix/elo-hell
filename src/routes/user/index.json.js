@@ -34,7 +34,8 @@ export async function get(req, res) {
 
 export async function post(req, res) {
 	const { db, body } = req;
-	const { username } = body;
+	let { username } = body;
+	username = username.replace(' ', '_');
 
 	res.writeHead(200, { 'Content-Type': 'application/json' });
 

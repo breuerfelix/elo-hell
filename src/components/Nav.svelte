@@ -52,8 +52,14 @@
 	}
 
 	@media screen and (max-width: 620px) and (orientation: portrait) {
+		nav {
+			padding: 0;
+			margin: 0;
+		}
+
 		li {
-			padding: 0 0;
+			padding: 0;
+			margin: 0;
 		}
 	}
 </style>
