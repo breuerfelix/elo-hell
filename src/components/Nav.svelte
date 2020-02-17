@@ -26,7 +26,7 @@
 	li {
 		display: block;
 		float: left;
-		padding: 0 .5em;
+		padding: 0 1em;
 	}
 
 	.selected {
@@ -47,8 +47,14 @@
 	a {
 		font-weight: 400;
 		text-decoration: none;
-		padding: 1em 0.5em;
+		padding: 1em .5em;
 		display: block;
+	}
+
+	@media screen and (max-width: 620px) and (orientation: portrait) {
+		li {
+			padding: 0 0;
+		}
 	}
 </style>
 
