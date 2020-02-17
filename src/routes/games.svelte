@@ -37,6 +37,10 @@
     .unverified {
         font-style: italic;
     }
+
+    .declined {
+        text-decoration: line-through;
+    }
 </style>
 
 <table>
@@ -47,7 +51,10 @@
         <th class='hide-mobile'># date</th>
     </tr>
     {#each games as game}
-    <tr class:unverified={!game.userVerified}>
+    <tr
+        class:unverified={!game.userVerified || game.userVerified.length < 1}
+        class:declined={game.userDeclined && game.userDeclined.length > 0}
+    >
         <td>{#each game.usersOne as player}{player}<br>{/each}</td>
         <td>{game.scoreOne} : {game.scoreTwo}</td>
         <td>{#each game.usersTwo as player}{player}<br>{/each}</td>

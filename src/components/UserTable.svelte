@@ -3,6 +3,8 @@
     export let usersOne;
     export let usersTwo;
 
+    const MAX_TEAM_SIZE = 2;
+
     function addUser(user, list) {
         if (list.includes(user)) {
             // remove user if already in there
@@ -11,6 +13,8 @@
 
         // do nothing if user exists in other list
         if (usersOne.includes(user) || usersTwo.includes(user)) return list;
+
+        if (list.length >= MAX_TEAM_SIZE) return list;
 
         return [...list, user];
     }

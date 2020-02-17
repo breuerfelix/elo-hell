@@ -123,7 +123,7 @@ export async function post(req, res) {
 		);
 	}
 
-	if (telegramBot && users.filter(user => !user.verified).length == 0) {
+	if (telegramBot) {
 		console.log('all user verified');
 
 		const message = `
@@ -135,7 +135,7 @@ ${scoreTwo} - ${usersTwo.join(', ')}
 
 		const data = { gameId: game._id };
 
-		for (const player of users) {
+		for (const player of users.filter(user => user.verified)) {
 			const opts = {
 				reply_markup: {
 					inline_keyboard: [
