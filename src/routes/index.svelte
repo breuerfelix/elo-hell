@@ -1,14 +1,33 @@
 <script context='module'>
-	export async function preload(page, session) {
+	export async function preload({ query }, session) {
 		const res_user = await this.fetch('user.json?amount=100');
 		const users = await res_user.json();
 
-		return { users };
+		return { users, query };
 	}
 </script>
 
 <script>
+	import { onMount, onDestroy } from 'svelte';
+	import { tryParseInt } from '../core';
+
 	export let users;
+	export let query;
+
+	// if reload query parameter is set
+	// auto update the table every x seconds
+	const intervalTimer = tryParseInt(query.reload, 0);
+	if (intervalTimer > 0) {
+		let interval = null;
+		onMount(async () => {
+			interval = setInterval(async () => {
+				const res_user = await fetch('user.json?amount=100');
+				users = await res_user.json();
+			}, intervalTimer * 1000);
+		});
+
+		onDestroy(() => interval && clearInterval(interval));
+	}
 </script>
 
 <style>
