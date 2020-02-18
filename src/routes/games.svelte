@@ -41,19 +41,24 @@
     .declined {
         text-decoration: line-through;
     }
+
+    .bold {
+        font-weight: bold;
+    }
 </style>
 
 <table>
     <tr>
-        <th># team 1</th>
-        <th># score</th>
-        <th># team 2</th>
-        <th class='hide-mobile'># date</th>
+        <th>team 1</th>
+        <th>score</th>
+        <th>team 2</th>
+        <th class='hide-mobile'>date</th>
     </tr>
     {#each games as game}
     <tr
         class:unverified={!game.userVerified || game.userVerified.length < 1}
         class:declined={game.userDeclined && game.userDeclined.length > 0}
+        class:bold={game.scoreOne == 0 || game.scoreTwo == 0}
     >
         <td>{#each game.usersOne as player}{player}<br>{/each}</td>
         <td>{game.scoreOne} : {game.scoreTwo}</td>

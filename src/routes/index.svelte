@@ -36,12 +36,12 @@
 
 <table>
 	<tr>
-		<th># rank</th>
-		<th># username</th>
-		<th># elo</th>
-		<th class='hide-mobile'># wins</th>
-		<th class='hide-mobile'># games</th>
-		<th class='hide-mobile'># diff</th>
+		<th>rank</th>
+		<th>username</th>
+		<th>elo</th>
+		<th class='hide-mobile'>wins</th>
+		<th class='hide-mobile'>games</th>
+		<th class='hide-mobile'>diff</th>
 	</tr>
 	{#each users as user, rank}
 	<tr>
