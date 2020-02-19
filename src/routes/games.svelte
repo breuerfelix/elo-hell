@@ -12,7 +12,7 @@
 </script>
 
 <script>
-    import {formatDate} from '../core';
+    import { formatDate } from '../core';
     export let games;
 </script>
 

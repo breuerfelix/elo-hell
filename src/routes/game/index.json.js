@@ -10,7 +10,11 @@ export async function get(req, res) {
 	const { db } = req;
 	const { amount = 10 } = req.query;
 
-	const games = await db.collection('games').find().limit(Number(amount)).toArray();
+	const games = await db.collection('games')
+		.find()
+		.sort({ timestamp: -1 })
+		.limit(Number(amount))
+		.toArray();
 
 	res.writeHead(200, { 'Content-Type': 'application/json' });
 
