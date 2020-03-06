@@ -18,8 +18,8 @@ const {
 	TELEGRAM_TOKEN = null,
 	TELEGRAM_HOST = null,
 } = process.env;
+
 const dev = NODE_ENV === 'development';
-console.log('node env:', NODE_ENV);
 
 const mongoClient = new MongoClient(MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -34,13 +34,13 @@ mongoClient.connect(err => {
 	// telegram bot
 	let telegramBot = null;
 
-	if (TELEGRAM_TOKEN && TELEGRAM_HOST) {
+	if (TELEGRAM_TOKEN && (TELEGRAM_HOST || dev)) {
 		console.log('using telegram bot');
 		const url = `${TELEGRAM_SCHEME}://${TELEGRAM_HOST}/telegram.json`;
 		telegramBot = setupTelegram(TELEGRAM_TOKEN, url, dev, db);
 	}
 
-	function database(req, res, next) {
+	function customMiddleware(req, res, next) {
 		req.db = db;
 		req.telegramBot = telegramBot;
 		next();
@@ -51,7 +51,7 @@ mongoClient.connect(err => {
 			compression({ threshold: 0 }),
 			sirv('static', { dev }),
 			json(),
-			database,
+			customMiddleware,
 			sapper.middleware(),
 		)
 		.listen(PORT, err => {

@@ -30,6 +30,8 @@ module.exports = {
     'no-tabs': 0,
     'no-console': 0,
     'no-restricted-syntax': 0,
+    'no-underscore-dangle': 0,
+    'camelcase': 0,
     'arrow-parens': 0,
     'eqeqeq': 0,
     'import/no-extraneous-dependencies': 0,

@@ -99,7 +99,19 @@ function setupTelegram(token, url, dev, db) {
 	});
 
 	bot.on('callback_query', async callbackQuery => {
-		const { data, message: { text, message_id, chat: { id } } } = callbackQuery;
+		const {
+			data,
+			message: {
+				text,
+				message_id,
+				chat: {
+					id,
+					first_name,
+					last_name,
+					username,
+				},
+			},
+		} = callbackQuery;
 		const { action, gameId } = JSON.parse(data);
 
 		const opts = {
@@ -113,6 +125,25 @@ function setupTelegram(token, url, dev, db) {
 		const field = action == 'verify' ? 'userVerified' : 'userDeclined';
 
 		const user = await db.collection('users').findOne({ telegramId: id });
+		if (
+			user.telegramUsername != username
+			|| user.first_name != first_name
+			|| user.last_name !== last_name
+		) {
+			// update user info to update their display name
+			db.collection('users').updateOne(
+				{ telegramId: id },
+				{
+					$set: {
+						telegramUsername: username,
+						first_name,
+						last_name,
+					},
+				},
+			);
+		}
+
+		// TODO push chat_id instead of username
 		db.collection('games').updateOne(
 			{ _id: new ObjectID(gameId) },
 			{ $push: { [field]: user.username } },
