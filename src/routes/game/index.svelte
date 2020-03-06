@@ -13,13 +13,13 @@
 </script>
 
 <script>
-    import {goto} from      '@sapper/app';
-    import Stack from       '@silvancodes/svelte-the-stack';
-    import Bracket from     '../../components/Bracket.svelte';
-    import Cover from       '../../components/Cover.svelte';
-    import ScoreBar from    '../../components/ScoreBar.svelte';
-    import UserBar from     '../../components/UserBar.svelte';
-    import UserTable from   '../../components/UserTable.svelte';
+    import Stack from '@silvancodes/svelte-the-stack';
+    import Bracket from '../../components/Bracket.svelte';
+    import Cover from '../../components/Cover.svelte';
+    import ScoreBar from '../../components/ScoreBar.svelte';
+    import UserBar from '../../components/UserBar.svelte';
+    import UserTable from '../../components/UserTable.svelte';
+    import { goto } from '@sapper/app';
 
     export let users;
     let usersOne = [];

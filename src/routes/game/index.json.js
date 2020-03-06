@@ -1,9 +1,27 @@
-const K = 30;
-const F = 400;
-const R = 10;
+const K = 30.0;
+const F = 400.0;
+const R = 10.0;
 
-function prob(rating1, rating2) {
+function eloAlgorithm(rating1, rating2) {
     return 1.0 / (1.0 + (10 ** ((rating2 - rating1) / F)));
+}
+
+export function calculateElo(eloWinner, eloLoser, diff, users) {
+    const probRes = eloAlgorithm(eloWinner, eloLoser);
+
+    let resultElo = (diff / R) * (K * (1.0 - probRes));
+
+    // if the diff is 10, double the amount of elo
+    if (diff == 10) {
+        resultElo *= 2.0;
+    }
+
+    // reduce the amount of elo if one user is new to the system
+    if (users.filter(user => user.games + 1 < 10).length > 0) {
+        resultElo /= 2.0;
+    }
+
+    return resultElo;
 }
 
 export async function get(req, res) {
@@ -40,10 +58,31 @@ export async function post(req, res) {
         return;
     }
 
+    const winner = (scoreOne > scoreTwo) ? [...usersOne] : [...usersTwo];
+    const scoreWinner = (scoreOne > scoreTwo) ? scoreOne : scoreTwo;
+    const loser = (scoreOne > scoreTwo) ? [...usersTwo] : [...usersOne];
+    const scoreLoser = (scoreOne > scoreTwo) ? scoreTwo : scoreOne;
+
+    function averageElo(players) {
+        return users.filter(x => players.includes(x.username))
+            .reduce((pv, cv) => pv + cv.elo, 0) / players.length;
+    }
+
+    const averageEloWinner = averageElo(winner);
+    const averageEloLoser = averageElo(loser);
+
+    const diff = Math.abs(scoreWinner - scoreLoser);
+
+    const elo = calculateElo(averageEloWinner, averageEloLoser, diff, users);
+
     const gameDate = new Date();
 
     const mongoGame = await db.collection('games').insertOne({
-        ...body,
+        elo,
+        usersOne: winner,
+        scoreOne: scoreWinner,
+        usersTwo: loser,
+        scoreTwo: scoreLoser,
         timestamp: gameDate,
         userVerified: [],
         userDeclined: [],
@@ -51,64 +90,16 @@ export async function post(req, res) {
 
     const game = mongoGame.ops[0];
 
-    const averageEloOne = users.filter(x => usersOne.includes(x.username))
-        .reduce((pv, cv) => pv + cv.elo, 0) / usersOne.length;
-
-    const averageEloTwo = users.filter(x => usersTwo.includes(x.username))
-        .reduce((pv, cv) => pv + cv.elo, 0) / usersTwo.length;
-
-    console.log('averageOne', averageEloOne);
-    console.log('averageTwo', averageEloTwo);
-
-    const teamOneWon = scoreOne > scoreTwo;
-    const diff = Math.abs(scoreOne - scoreTwo);
-    console.log('diff', diff);
-
-    const probOne = prob(averageEloOne, averageEloTwo);
-    const probTwo = prob(averageEloTwo, averageEloOne);
-
-    console.log('probOne', probOne);
-    console.log('probTwo', probTwo);
-
-    let resOne = (diff / R) * (K * ((teamOneWon ? 1 : 0) - probOne));
-    let resTwo = (diff / R) * (K * ((teamOneWon ? 0 : 1) - probTwo));
-
-    // if the diff is 10, double the amount of elo
-    if (diff == 10) {
-        resOne *= 2;
-        resTwo *= 2;
-        console.log('elo * 2 because score diff is 10');
-    }
-
-    // reduce the amount of elo if one user is new to the system
-    const lowUsers = users.filter(user => user.games + 1 < 10);
-    if (lowUsers.length > 0) {
-        resOne /= 2;
-        resTwo /= 2;
-        console.log('elo / 2 because at least one user got less then 10 games played');
-    }
-
-    console.log('resOne', resOne);
-    console.log('resTwo', resTwo);
-
-    // TODO prettify this loop
     for (const player of users) {
-        if (usersOne.includes(player.username)) {
-            player.elo += resOne;
-            if (teamOneWon) {
-                player.wins += 1;
-                player.diff += diff;
-            } else {
-                player.diff -= diff;
-            }
-        } else {
-            player.elo += resTwo;
-            if (!teamOneWon) {
-                player.wins += 1;
-                player.diff += diff;
-            } else {
-                player.diff -= diff;
-            }
+        if (winner.includes(player.username)) {
+            player.elo += elo;
+            player.wins += 1;
+            player.diff += diff;
+        }
+
+        if (loser.includes(player.username)) {
+            player.elo -= elo;
+            player.diff -= diff;
         }
 
         player.games += 1;
