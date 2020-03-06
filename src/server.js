@@ -11,12 +11,12 @@ import { setupTelegram } from './telegram';
 config();
 
 const {
-	PORT = 80,
-	NODE_ENV,
-	MONGO_URL = 'mongodb://mongo:27017',
-	TELEGRAM_SCHEME = 'https',
-	TELEGRAM_TOKEN = null,
-	TELEGRAM_HOST = null,
+    PORT = 80,
+    NODE_ENV,
+    MONGO_URL = 'mongodb://mongo:27017',
+    TELEGRAM_SCHEME = 'https',
+    TELEGRAM_TOKEN = null,
+    TELEGRAM_HOST = null,
 } = process.env;
 
 const dev = NODE_ENV === 'development';
@@ -24,37 +24,37 @@ const dev = NODE_ENV === 'development';
 const mongoClient = new MongoClient(MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 
 mongoClient.connect(err => {
-	if (err) {
-		console.error('mongo error:', err);
-		return;
-	}
+    if (err) {
+        console.error('mongo error:', err);
+        return;
+    }
 
-	const db = mongoClient.db('elo');
+    const db = mongoClient.db('elo');
 
-	// telegram bot
-	let telegramBot = null;
+    // telegram bot
+    let telegramBot = null;
 
-	if (TELEGRAM_TOKEN && (TELEGRAM_HOST || dev)) {
-		console.log('using telegram bot');
-		const url = `${TELEGRAM_SCHEME}://${TELEGRAM_HOST}/telegram.json`;
-		telegramBot = setupTelegram(TELEGRAM_TOKEN, url, dev, db);
-	}
+    if (TELEGRAM_TOKEN && (TELEGRAM_HOST || dev)) {
+        console.log('using telegram bot');
+        const url = `${TELEGRAM_SCHEME}://${TELEGRAM_HOST}/telegram.json`;
+        telegramBot = setupTelegram(TELEGRAM_TOKEN, url, dev, db);
+    }
 
-	function customMiddleware(req, res, next) {
-		req.db = db;
-		req.telegramBot = telegramBot;
-		next();
-	}
+    function customMiddleware(req, res, next) {
+        req.db = db;
+        req.telegramBot = telegramBot;
+        next();
+    }
 
-	polka()
-		.use(
-			compression({ threshold: 0 }),
-			sirv('static', { dev }),
-			json(),
-			customMiddleware,
-			sapper.middleware(),
-		)
-		.listen(PORT, err => {
-			if (err) console.error('polka error:', err);
-		});
+    polka()
+        .use(
+            compression({ threshold: 0 }),
+            sirv('static', { dev }),
+            json(),
+            customMiddleware,
+            sapper.middleware(),
+        )
+        .listen(PORT, err => {
+            if (err) console.error('polka error:', err);
+        });
 });

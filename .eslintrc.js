@@ -30,7 +30,7 @@ module.exports = {
     'src/service-worker.js'
   ],
   rules: {
-    'indent': ['error', 'tab'],
+    'indent': ['error', 4],
     'no-shadow': 0,
     'no-tabs': 0,
     'no-console': 0,
