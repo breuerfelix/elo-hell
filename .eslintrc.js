@@ -8,7 +8,7 @@ module.exports = {
     'airbnb-base',
   ],
   plugins: [
-	'svelte3',
+    'svelte3',
   ],
   overrides: [
     {
@@ -24,13 +24,20 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module',
   },
+  ignorePatterns: [
+    'node_modules/',
+    'src/node_modules',
+    'src/service-worker.js'
+  ],
   rules: {
-    'no-shadow': 0,
     'indent': ['error', 'tab'],
+    'no-shadow': 0,
     'no-tabs': 0,
     'no-console': 0,
     'no-restricted-syntax': 0,
     'no-underscore-dangle': 0,
+    'no-restricted-globals': 0,
+    'radix': 0,
     'camelcase': 0,
     'arrow-parens': 0,
     'eqeqeq': 0,
