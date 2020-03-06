@@ -53,6 +53,7 @@
         <th>score</th>
         <th>team 2</th>
         <th class='hide-mobile'>date</th>
+        <th class='hide-mobile'>elo</th>
     </tr>
     {#each games as game}
     <tr
@@ -64,6 +65,7 @@
         <td>{game.scoreOne} : {game.scoreTwo}</td>
         <td>{#each game.usersTwo as player}{player}<br>{/each}</td>
         <td class='hide-mobile'>{formatDate(game.timestamp)}</td>
+        <td class='hide-mobile'>{game.elo ? game.elo.toFixed(2) : '-'}</td>
     </tr>
     {/each}
 </table>
