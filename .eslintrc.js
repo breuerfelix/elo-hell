@@ -37,6 +37,7 @@ module.exports = {
     'no-restricted-syntax': 0,
     'no-underscore-dangle': 0,
     'no-restricted-globals': 0,
+    'no-await-in-loop': 0,
     'radix': 0,
     'camelcase': 0,
     'arrow-parens': 0,
